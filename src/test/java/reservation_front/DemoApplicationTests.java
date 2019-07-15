@@ -1,4 +1,4 @@
-package restaurant_reservation_front;
+package reservation_front;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

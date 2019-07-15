@@ -1,4 +1,4 @@
-package restaurant_reservation_front;
+package reservation_front;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
