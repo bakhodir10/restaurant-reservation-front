@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>reservation-front</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>reservation-front</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
+    <name>reservation-front</name>
     <description>Restaurant reservation app</description>
 
     <properties>
