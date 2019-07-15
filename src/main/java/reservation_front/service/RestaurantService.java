@@ -1,14 +1,18 @@
 package reservation_front.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import reservation_front.domain.Restaurant;
 
-@Service
-public class RestaurantService {
+import java.util.List;
 
-    @Autowired
-    private RestTemplate restTemplate;
+public interface RestaurantService {
 
-    
+    Restaurant get(Long id);
+
+    List<Restaurant> getAll();
+
+    Long add(Restaurant p);
+
+    void update(Long id, Restaurant p);
+
+    void delete(Long id);
 }
