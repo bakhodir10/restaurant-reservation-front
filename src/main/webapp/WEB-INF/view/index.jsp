@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<h3>List of restaurants: </h3>
 <%--	<h1>Cars currently in the shop</h1>--%>
 <%--	<table>--%>
 <%--		<c:forEach var="car" items="${cars}">--%>
