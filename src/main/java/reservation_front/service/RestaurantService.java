@@ -1,4 +1,4 @@
-package reservation_front.restaurant;
+package reservation_front.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
