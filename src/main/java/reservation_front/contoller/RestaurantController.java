@@ -19,13 +19,13 @@ public class RestaurantController {
     private RestaurantServiceProxy restaurantService;
 
     @PostMapping
-    public String getOne(Model model) {
+    public String getList(Model model) {
         model.addAttribute("restaurants", restaurantService.getAll());
-        return "restaurants";
+        return "restaurant-list";
     }
 
     @GetMapping(value = "/{id}")
-    public String getList(@PathVariable Long id, Model model) {
+    public String getOne(@PathVariable Long id, Model model) {
         model.addAttribute("restaurant", restaurantService.get(id));
         return "restaurant-detail";
     }
