@@ -16,40 +16,40 @@ public class RestaurantController {
     @Autowired
     private RestaurantServiceProxy restaurantService;
 
-    @GetMapping("/restaurants")
+    @GetMapping("/admin/restaurants")
     public String viewList(@ModelAttribute Restaurant restaurant, Model model) {
         model.addAttribute("restaurants", restaurantService.getAll());
         return "/restaurant/restaurant-list";
     }
 
-    @GetMapping("/restaurant/add")
+    @GetMapping("/admin/restaurant/add")
     public String viewAdd(@ModelAttribute Restaurant restaurant, Model model) {
         model.addAttribute("msg", "Add");
         return "/restaurant/restaurant-detail";
     }
 
-    @GetMapping("/restaurants/{id}")
+    @GetMapping("/admin/restaurants/{id}")
     public String get(@PathVariable long id, Model model) {
         model.addAttribute("restaurant", restaurantService.get(id));
         model.addAttribute("msg", "Update");
         return "/restaurant/restaurant-detail";
     }
 
-    @PostMapping("/restaurant")
+    @PostMapping("/admin/restaurant")
     public String add(Restaurant restaurant) {
         restaurantService.add(restaurant);
-        return "redirect:/restaurants";
+        return "redirect:/admin/restaurants";
     }
 
-    @PostMapping("/restaurants/{id}")
+    @PostMapping("/admin/restaurants/{id}")
     public String update(Restaurant restaurant, @PathVariable long id) {
         restaurantService.update(id, restaurant); // restaurant.id already set by binding
-        return "redirect:/restaurants";
+        return "redirect:/admin/restaurants";
     }
 
-    @PostMapping(value = "/restaurants/delete")
+    @PostMapping(value = "/admin/restaurants/delete")
     public String delete(long id) {
         restaurantService.delete(id);
-        return "redirect:/restaurants";
+        return "redirect:/admin/restaurants";
     }
 }

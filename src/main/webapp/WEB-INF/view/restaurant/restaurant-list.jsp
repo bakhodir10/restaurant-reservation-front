@@ -14,14 +14,17 @@
 <table>
     <c:forEach var="restaurant" items="${restaurants}">
         <tr>
-            <td>${restaurant.name}</td>
+            <td>Name: ${restaurant.name}</td>
+            <td>Address: ${restaurant.address.street} ${restaurant.address.city}
+                    ${restaurant.address.state} ${restaurant.address.zipCode}
+            </td>
 
             <td><a href="restaurants/${restaurant.id}">edit</a></td>
         </tr>
     </c:forEach>
 </table>
 
-<a href="/restaurant/add"> Add a restaurant</a>
+<a href="/admin/restaurant/add"> Add a restaurant</a>
 </body>
 
 </html>

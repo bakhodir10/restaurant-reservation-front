@@ -19,6 +19,13 @@
                 <td>Name:</td>
                 <td><input type="text" name="name" value="${restaurant.name}"/></td>
             </tr>
+            <tr>
+                <td>Address:</td>
+                <td><input type="text" name="address.street" value="${restaurant.address.street}"/></td>
+                <td><input type="text" name="address.city" value="${restaurant.address.city}"/></td>
+                <td><input type="text" name="address.state" value="${restaurant.address.state}"/></td>
+                <td><input type="text" name="address.zipCode" value="${restaurant.address.zipCode}"/></td>
+            </tr>
         </table>
         <input type="submit" value="${msg}"/>
     </form>
