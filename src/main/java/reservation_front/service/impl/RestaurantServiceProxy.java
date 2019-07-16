@@ -9,10 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import reservation_front.domain.Restaurant;
 import reservation_front.service.RestaurantService;
 
-import java.net.URI;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Service
 public class RestaurantServiceProxy implements RestaurantService {
@@ -20,42 +17,36 @@ public class RestaurantServiceProxy implements RestaurantService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private final String restaurantsUrl = "http://localhost:8088/restaurants/{id}";
-    private final String restaurantUrl = "http://localhost:8088/restaurant/";
+    private final String ONE_URL = "http://localhost:8088/restaurants/{id}";
+    private final String ALL_URL = "http://localhost:8088/restaurants/";
 
     @Override
     public Restaurant get(Long id) {
-        return restTemplate.getForObject(restaurantsUrl, Restaurant.class, id);
+        return restTemplate.getForObject(ONE_URL, Restaurant.class, id);
     }
 
     @Override
     public List<Restaurant> getAll() {
         ResponseEntity<List<Restaurant>> response =
-                restTemplate.exchange(restaurantUrl, HttpMethod.GET, null,
+                restTemplate.exchange(ALL_URL + "/list", HttpMethod.GET, null,
                         new ParameterizedTypeReference<List<Restaurant>>() {
                         });
         return response.getBody();
     }
 
     @Override
-    public Long add(Restaurant p) {
-        URI uri = restTemplate.postForLocation(restaurantUrl, p);
-        if (uri == null) {
-            return null;
-        }
-        Matcher m = Pattern.compile(".*/restaurant/(\\d+)").matcher(uri.getPath());
-        m.matches();
-        return Long.parseLong(m.group(1));
+    public Restaurant add(Restaurant p) {
+        return restTemplate.postForObject(ALL_URL, p, Restaurant.class);
     }
 
     @Override
     public void update(Long id, Restaurant p) {
-        restTemplate.put(restaurantsUrl, p, id);
+        restTemplate.put(ONE_URL, p, id);
     }
 
     @Override
     public void delete(Long id) {
-        restTemplate.delete(restaurantsUrl, id);
+        restTemplate.delete(ONE_URL, id);
     }
 
 }

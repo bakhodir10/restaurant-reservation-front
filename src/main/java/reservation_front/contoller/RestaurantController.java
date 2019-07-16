@@ -3,40 +3,53 @@ package reservation_front.contoller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import reservation_front.domain.Restaurant;
 import reservation_front.service.impl.RestaurantServiceProxy;
 
-import javax.validation.Valid;
-
-@Controller(value = "/restaurants")
+@Controller
 public class RestaurantController {
 
     @Autowired
     private RestaurantServiceProxy restaurantService;
 
-    @PostMapping
-    public String getList(Model model) {
+    @GetMapping("/restaurants")
+    public String viewList(@ModelAttribute Restaurant restaurant, Model model) {
         model.addAttribute("restaurants", restaurantService.getAll());
-        return "restaurant-list";
+        return "/restaurant/restaurant-list";
     }
 
-    @GetMapping(value = "/{id}")
-    public String getOne(@PathVariable Long id, Model model) {
+    @GetMapping("/restaurant/add")
+    public String viewAdd(@ModelAttribute Restaurant restaurant, Model model) {
+        model.addAttribute("msg", "Add");
+        return "/restaurant/restaurant-detail";
+    }
+
+    @GetMapping("/restaurants/{id}")
+    public String get(@PathVariable long id, Model model) {
         model.addAttribute("restaurant", restaurantService.get(id));
-        return "restaurant-detail";
+        model.addAttribute("msg", "Update");
+        return "/restaurant/restaurant-detail";
     }
 
-    @PostMapping(value = "/add")
-    public String addOne(@Valid Restaurant restaurant, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            return "restaurant-add";
-        } else {
-            restaurantService.add(restaurant);
-            return "redirect:/restaurant-detail/{" + restaurant.getId() + "}";
-        }
+    @PostMapping("/restaurant")
+    public String add(Restaurant restaurant) {
+        restaurantService.add(restaurant);
+        return "redirect:/restaurants";
+    }
+
+    @PostMapping("/restaurants/{id}")
+    public String update(Restaurant restaurant, @PathVariable long id) {
+        restaurantService.update(id, restaurant); // restaurant.id already set by binding
+        return "redirect:/restaurants";
+    }
+
+    @PostMapping(value = "/restaurants/delete")
+    public String delete(long id) {
+        restaurantService.delete(id);
+        return "redirect:/restaurants";
     }
 }

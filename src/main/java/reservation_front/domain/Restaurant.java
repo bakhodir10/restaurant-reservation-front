@@ -16,4 +16,6 @@ public class Restaurant {
     @NotNull
     @Min(value = 3)
     private String name;
+
+    private Address address;
 }

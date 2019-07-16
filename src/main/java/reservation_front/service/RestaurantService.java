@@ -10,7 +10,7 @@ public interface RestaurantService {
 
     List<Restaurant> getAll();
 
-    Long add(Restaurant p);
+    Restaurant add(Restaurant p);
 
     void update(Long id, Restaurant p);
 
