@@ -3,16 +3,20 @@ package reservation_front.contoller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import reservation_front.domain.FileStorage;
 import reservation_front.domain.Restaurant;
+import reservation_front.service.FileStorageService;
 import reservation_front.service.impl.RestaurantServiceProxy;
+
+import java.io.IOException;
 
 @Controller
 public class RestaurantController {
 
+    @Autowired
+    private FileStorageService fileStorageService;
     @Autowired
     private RestaurantServiceProxy restaurantService;
 
@@ -36,7 +40,17 @@ public class RestaurantController {
     }
 
     @PostMapping("/admin/restaurant")
-    public String add(Restaurant restaurant) {
+    public String add(Restaurant restaurant, @RequestParam MultipartFile attachFileObj) throws IOException {
+        System.out.println("Attachment Name?= " + attachFileObj.getOriginalFilename() + "\n");
+        if (!attachFileObj.getOriginalFilename().equals("")) {
+            FileStorage fileUploadObj = new FileStorage();
+            fileUploadObj.setName(attachFileObj.getOriginalFilename());
+            fileUploadObj.setData(attachFileObj.getBytes());
+
+            // Calling The Db Method To Save The Uploaded File In The Db
+            this.fileStorageService.add(fileUploadObj);
+            System.out.println("File Is Successfully Uploaded & Saved In The Database.... Hurrey!\n");
+        }
         restaurantService.add(restaurant);
         return "redirect:/admin/restaurants";
     }
