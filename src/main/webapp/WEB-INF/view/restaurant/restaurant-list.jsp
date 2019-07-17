@@ -16,11 +16,23 @@
 
 <body>
 <h1>All list of restaurants</h1>
-<div style="float: right">
-    <a href="/admin/restaurant/add">
-        <button type="button" class="btn btn-success">Add a restaurant</button>
-    </a>
+
+<div style="float: right; display: inline-block">
+
+    <div style="display: inline-block">
+        <a href="/admin/dining-tables/add">
+            <button type="button" class="btn btn-success">Add a table</button>
+        </a>
+    </div>
+
+    <div style="display: inline-block">
+        <a href="/admin/restaurant/add">
+            <button type="button" class="btn btn-success">Add a restaurant</button>
+        </a>
+    </div>
 </div>
+
+
 <br>
 <table class="table">
     <thead>

@@ -28,52 +28,67 @@
             });
         });
     </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body>
+<body style="margin: 25px">
+<h4>${msg} form</h4>
 <c:if test="${msg == 'Update'}">
 <form action="../restaurants/${restaurant.id}" method="post" enctype="multipart/form-data">
     </c:if>
     <c:if test="${msg == 'Add'}">
     <form action="../restaurant" method="post" enctype="multipart/form-data">
         </c:if>
-        <table>
-            <tr>
-                <td>Name:</td>
-                <td><input type="text" name="name" value="${restaurant.name}"/></td>
-            </tr>
-            <tr>
-                <td>Street:</td>
-                <td><input type="text" name="address.street" value="${restaurant.address.street}"/></td>
-            </tr>
-            <tr>
-                <td>City:</td>
-                <td><input type="text" name="address.city" value="${restaurant.address.city}"/></td>
-            </tr>
-            <tr>
-                <td>State:</td>
-                <td><input type="text" name="address.state" value="${restaurant.address.state}"/></td>
-            </tr>
-            <tr>
-                <td>Zip Code:</td>
-                <td><input type="text" name="address.zipCode" value="${restaurant.address.zipCode}"/></td>
-            </tr>
-            <tr>
-                <td>Attachment:</td>
-                <td>
-                    <input id="pickUpFileAttachment" type="file" name="attachFileObj" size="60"/>
-                    <span id="fileUploadErr">Please Upload A Picture!</span>
-                </td>
-            </tr>
-        </table>
-        <input type="submit" value="${msg}"/>
+        <form>
+            <div class="form-group" style="">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" value="${restaurant.name}" id="name"
+                       placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="street">Street</label>
+                <input type="text" class="form-control" id="street" name="address.name"
+                       value="${restaurant.address.street}" placeholder="Enter street">
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" name="address.city"
+                       value="${restaurant.address.city}"
+                       placeholder="Enter city">
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" class="form-control" id="state" name="address.state"
+                       value="${restaurant.address.state}"
+                       placeholder="Enter state">
+            </div>
+            <div class="form-group">
+                <label for="zipCode">Zip Code</label>
+                <input type="text" class="form-control" name="address.zipCode" value="${restaurant.address.zipCode}"
+                       id="zipCode"
+                       placeholder="Enter zipCode">
+            </div>
+            <button type="submit" class="btn btn-primary">${msg}</button>
+        </form>
     </form>
     <c:if test="${msg == 'Update'}">
     <form action="delete?id=${restaurant.id}" method="post">
         <br>
-        <button type="submit">Delete</button>
+        <button type="submit" class="btn btn-danger">Delete</button>
     </form>
     </c:if>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
