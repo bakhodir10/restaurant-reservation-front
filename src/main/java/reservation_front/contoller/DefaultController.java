@@ -8,6 +8,6 @@ public class DefaultController {
 
     @GetMapping("/")
     public String mainPage() {
-        return "index";
+        return "/restaurant/restaurant-list";
     }
 }

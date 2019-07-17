@@ -43,16 +43,20 @@
                 <td><input type="text" name="name" value="${restaurant.name}"/></td>
             </tr>
             <tr>
-                <td>Address:</td>
+                <td>Street:</td>
                 <td><input type="text" name="address.street" value="${restaurant.address.street}"/></td>
-                <td><input type="text" name="address.city" value="${restaurant.address.city}"/></td>
-                <td><input type="text" name="address.state" value="${restaurant.address.state}"/></td>
-                <td><input type="text" name="address.zipCode" value="${restaurant.address.zipCode}"/></td>
             </tr>
-
             <tr>
-                <td>Description:</td>
-                <td><input id="fileDescription" type="text" name="description" size="65"/></td>
+                <td>City:</td>
+                <td><input type="text" name="address.city" value="${restaurant.address.city}"/></td>
+            </tr>
+            <tr>
+                <td>State:</td>
+                <td><input type="text" name="address.state" value="${restaurant.address.state}"/></td>
+            </tr>
+            <tr>
+                <td>Zip Code:</td>
+                <td><input type="text" name="address.zipCode" value="${restaurant.address.zipCode}"/></td>
             </tr>
             <tr>
                 <td>Attachment:</td>
@@ -66,6 +70,7 @@
     </form>
     <c:if test="${msg == 'Update'}">
     <form action="delete?id=${restaurant.id}" method="post">
+        <br>
         <button type="submit">Delete</button>
     </form>
     </c:if>

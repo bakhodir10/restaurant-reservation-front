@@ -15,7 +15,6 @@ public class Restaurant implements Serializable {
     private Long id;
 
     @NotNull
-    @Min(value = 3)
     private String name;
     @Valid
     private Address address;
