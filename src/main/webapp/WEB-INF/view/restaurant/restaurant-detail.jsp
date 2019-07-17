@@ -58,7 +58,7 @@
                 <td>Attachment:</td>
                 <td>
                     <input id="pickUpFileAttachment" type="file" name="attachFileObj" size="60"/>
-                    <span id="fileUploadErr">Please Upload A File!</span>
+                    <span id="fileUploadErr">Please Upload A Picture!</span>
                 </td>
             </tr>
         </table>
