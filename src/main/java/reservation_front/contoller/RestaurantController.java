@@ -54,8 +54,7 @@ public class RestaurantController {
                 fileUploadObj.setData(attachFileObj.getBytes());
 
                 // Calling The Db Method To Save The Uploaded File In The Db
-                this.fileStorageService.add(fileUploadObj);
-                System.out.println("File Is Successfully Uploaded & Saved In The Database.... Hurrey!\n");
+                restaurant.setImage(fileUploadObj);
             }
             restaurantService.add(restaurant);
             return "redirect:/admin/restaurants";

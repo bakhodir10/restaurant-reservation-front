@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -18,4 +17,5 @@ public class Restaurant implements Serializable {
     private String name;
     @Valid
     private Address address;
+    private FileStorage image;
 }

@@ -49,7 +49,7 @@
             </div>
             <div class="form-group">
                 <label for="street">Street</label>
-                <input type="text" class="form-control" id="street" name="address.name"
+                <input type="text" class="form-control" id="street" name="address.street"
                        value="${restaurant.address.street}" placeholder="Enter street">
             </div>
             <div class="form-group">
@@ -69,6 +69,11 @@
                 <input type="text" class="form-control" name="address.zipCode" value="${restaurant.address.zipCode}"
                        id="zipCode"
                        placeholder="Enter zipCode">
+            </div>
+            <div class="form-group">
+                <label for="pickUpFileAttachment">Please upload an image</label>
+                <input type="file" class="form-control" name="attachFileObj" id="pickUpFileAttachment"
+                size="1024">
             </div>
             <button type="submit" class="btn btn-primary">${msg}</button>
         </form>
