@@ -37,6 +37,7 @@
 <table class="table">
     <thead>
     <tr>
+        <th scope="col">Image</th>
         <th scope="col">Restaurant Name</th>
         <th scope="col">Address</th>
         <th>Add a table</th>
@@ -47,6 +48,9 @@
     <tbody>
     <c:forEach var="restaurant" items="${restaurants}">
         <tr>
+            <td>
+                <img alt="img" src="data:image/jpeg;base64,${restaurant.image.base64image}" width="200px" height="150px"/>
+            </td>
             <td>${restaurant.name}</td>
             <td>${restaurant.address.street} ${restaurant.address.city}
                     ${restaurant.address.state} ${restaurant.address.zipCode}

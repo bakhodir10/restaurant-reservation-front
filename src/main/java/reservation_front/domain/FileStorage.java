@@ -10,4 +10,5 @@ public class FileStorage implements Serializable {
     private String name;
     private Long size;
     private byte[] data;
+    private String base64image;
 }

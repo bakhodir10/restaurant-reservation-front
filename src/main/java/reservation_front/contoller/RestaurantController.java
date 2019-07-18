@@ -13,6 +13,7 @@ import reservation_front.service.impl.RestaurantServiceProxy;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.Base64;
 
 @Controller
 public class RestaurantController {
@@ -52,8 +53,10 @@ public class RestaurantController {
                 FileStorage fileUploadObj = new FileStorage();
                 fileUploadObj.setName(attachFileObj.getOriginalFilename());
                 fileUploadObj.setData(attachFileObj.getBytes());
-
-                // Calling The Db Method To Save The Uploaded File In The Db
+                byte[] bytes = attachFileObj.getBytes();
+                String base64image = Base64.getEncoder().encodeToString(bytes);
+                fileUploadObj.setBase64image(base64image);
+                
                 restaurant.setImage(fileUploadObj);
             }
             restaurantService.add(restaurant);
