@@ -19,11 +19,11 @@
 
 <div style="float: right; display: inline-block">
 
-    <div style="display: inline-block">
-        <a href="/admin/dining-tables/add">
-            <button type="button" class="btn btn-success">Add a table</button>
-        </a>
-    </div>
+    <%--    <div style="display: inline-block">--%>
+    <%--        <a href="/admin/dining-tables/add">--%>
+    <%--            <button type="button" class="btn btn-success">Add a table</button>--%>
+    <%--        </a>--%>
+    <%--    </div>--%>
 
     <div style="display: inline-block">
         <a href="/admin/restaurant/add">
@@ -39,9 +39,9 @@
     <tr>
         <th scope="col">Restaurant Name</th>
         <th scope="col">Address</th>
-        <th>Tables count</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>Add a table</th>
+        <th>Edit restaurant</th>
+        <th>Delete restaurant</th>
     </tr>
     </thead>
     <tbody>
@@ -51,12 +51,18 @@
             <td>${restaurant.address.street} ${restaurant.address.city}
                     ${restaurant.address.state} ${restaurant.address.zipCode}
             </td>
-            <td>${fn:length(restaurants)}</td>
+            <td>
+                <form action="/admin/restaurants/${restaurant.id}/dining-tables" method="post">
+                    <button class="btn btn-primary" type="submit">Add</button>
+                </form>
+            </td>
+
             <td>
                 <a href="restaurants/${restaurant.id}">
                     <button class="btn btn-primary">Edit</button>
                 </a>
             </td>
+
             <td>
                 <form action="/admin/restaurants/delete?id=${restaurant.id}" method="post">
                     <button class="btn btn-danger" type="submit">Delete</button>
